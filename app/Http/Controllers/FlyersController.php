@@ -89,4 +89,18 @@ class FlyersController extends Controller
     {
         //
     }
+
+    /**
+     * AJAX saving the file from dropzone
+     * @param $zip
+     * @param $street
+     */
+    public function addPhoto($zip, $street)
+    {
+        // Upload a file
+        $path = request()->file('file')->store('photos', 'public');
+        /** @var Flyer $flyer */
+        $flyer = Flyer::locatedAt($zip, $street)->first();
+        $flyer->photos()->create(['path' => $path]);
+    }
 }

@@ -39,7 +39,6 @@
         ]); ?>
     </script>
     <script src="{{ mix('/js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
     @yield('scripts.footer')
     @include('flash')
 </body>
