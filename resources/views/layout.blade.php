@@ -33,5 +33,12 @@
     <div class="container">
         @yield('content')
     </div>
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+    <script src="{{ mix('/js/app.js') }}"></script>
+    @include('flash')
 </body>
 </html>

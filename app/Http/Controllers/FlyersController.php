@@ -37,6 +37,7 @@ class FlyersController extends Controller
     public function store(FlyerRequest $request)
     {
         Flyer::create($request->all());
+        flash('Объявление добавлено!');
         return redirect()->back();
     }
 
