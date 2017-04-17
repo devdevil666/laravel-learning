@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flyer extends Model
 {
+    protected $fillable = [
+        'street',
+        'city',
+        'country',
+        'state',
+        'zip',
+        'price',
+        'description',
+    ];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

@@ -39,10 +39,5 @@
 </div>
 
 <div class="form-group">
-    <label for="photos">Photos</label>
-    <input type="file" name="photos" id="photos" c./lass="form-control" value="{{ old('photos') }}">
-</div>
-
-<div class="form-group">
     <button type="submit" class="btn btn-success">Create!</button>
 </div>
