@@ -22,4 +22,15 @@ class Flyer extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function getPriceAttribute($price)
+    {
+        return '$' . number_format($price);
+    }
+
+    public function scopeLocatedAt($query, $zip, $street)
+    {
+        $street = str_replace('-',' ', $street);
+        return $query->where(compact('zip', 'street'))->first();
+    }
 }
