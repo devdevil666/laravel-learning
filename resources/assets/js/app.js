@@ -7,3 +7,4 @@
 
 require('./bootstrap');
 require('sweetalert');
+require('dropzone');
