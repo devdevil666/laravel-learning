@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 
 class Flyer extends Model
 {
@@ -32,5 +33,15 @@ class Flyer extends Model
     {
         $street = str_replace('-',' ', $street);
         return $query->where(compact('zip', 'street'))->first();
+    }
+
+    /**
+     * Add photo to flyer
+     * @param Photo $photo
+     * @return false|Model
+     */
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
     }
 }

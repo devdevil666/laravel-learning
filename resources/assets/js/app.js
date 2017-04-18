@@ -8,3 +8,8 @@
 require('./bootstrap');
 require('sweetalert');
 require('dropzone');
+
+Dropzone.options.addPhoto = {
+    maxFilesize: 2,
+    acceptedFiles: '.jpg, .jpeg, .png'
+};

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Flyer;
 use App\Http\Requests\FlyerRequest;
+use App\Photo;
 use Illuminate\Http\Request;
 
 class FlyersController extends Controller
@@ -94,13 +95,18 @@ class FlyersController extends Controller
      * AJAX saving the file from dropzone
      * @param $zip
      * @param $street
+     * @param Request $request
      */
-    public function addPhoto($zip, $street)
+    public function addPhoto($zip, $street, Request $request)
     {
-        // Upload a file
-        $path = request()->file('file')->store('photos', 'public');
+        $this->validate($request, [
+            'file' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        $photo = Photo::fromForm(request()->file('file'));
         /** @var Flyer $flyer */
-        $flyer = Flyer::locatedAt($zip, $street)->first();
-        $flyer->photos()->create(['path' => $path]);
+        $flyer = Flyer::locatedAt($zip, $street)
+            ->first()
+            ->addPhoto($photo);
     }
 }
