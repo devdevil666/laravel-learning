@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-9">
                 @foreach($flyer->photos as $photo)
-                    <img src="{!! \Illuminate\Support\Facades\Storage::url($photo->path) !!}" alt="">
+                    <img src="{!! \Illuminate\Support\Facades\Storage::url($photo->thumbnail_path, 'public') !!}" alt="">
                 @endforeach
             </div>
         </div>
