@@ -7,13 +7,16 @@
 
 require('./bootstrap');
 require('sweetalert');
-require('dropzone');
+let Dropzone = require('dropzone');
 require('jquery-pjax');
 
 if ($('.dropzone').length) {
     Dropzone.options.addPhoto = {
         maxFilesize: 2,
-        acceptedFiles: '.jpg, .jpeg, .png'
+        acceptedFiles: '.jpg, .jpeg, .png',
+        success() {
+            $.pjax.reload('#photos-container');
+        }
     };
 }
 
