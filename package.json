@@ -13,13 +13,16 @@
     "axios": "^0.15.3",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^3.2.3",
-    "jquery": "^3.1.1",
+    "jquery": "2.1.1",
+    "jquery-pjax": "git+https://github.com/defunkt/jquery-pjax.git",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "node-sass": "^4.5.2",
     "vue": "^2.1.10"
   },
   "dependencies": {
     "dropzone": "^4.3.0",
+    "pjax": "^0.2.4",
     "sweetalert": "^1.1.3"
   }
 }

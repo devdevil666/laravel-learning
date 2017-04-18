@@ -26,7 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Flyer::class, function (Faker\Generator $faker) {
     return [
         'street' => $faker->streetAddress,
-        'ciy' => $faker->city,
+        'city' => $faker->city,
         'state' => $faker->state,
         'zip' => $faker->postcode,
         'country' => $faker->country,

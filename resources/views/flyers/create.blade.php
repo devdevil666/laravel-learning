@@ -4,23 +4,11 @@
     <div class="jumbotron">
         <h1>Create</h1>
 
-        <div class="row">
-            <form method="post" action="/flyers" type="multipart/form-data" class="col-md-6">
+        <div class="row" id="pjax-container">
+            @include('errors')
+            <form method="post" action="/flyers" type="multipart/form-data" data-pjax="true">
                 @include('flyers.form')
             </form>
-
-            @if(count($errors) > 0)
-            <div class="col-md-6">
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $err)
-                            <li>{{ $err }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            @endif
-
         </div>
     </div>
 @stop

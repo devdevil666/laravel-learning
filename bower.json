@@ -1,0 +1,17 @@
+{
+  "name": "laravel-learning",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Evgeniy <evgeniy.web@ukr.net>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/devdevil666/laravel-learning",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

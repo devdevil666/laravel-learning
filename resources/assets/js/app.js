@@ -8,8 +8,20 @@
 require('./bootstrap');
 require('sweetalert');
 require('dropzone');
+require('jquery-pjax');
 
-Dropzone.options.addPhoto = {
-    maxFilesize: 2,
-    acceptedFiles: '.jpg, .jpeg, .png'
-};
+if ($('.dropzone').length) {
+    Dropzone.options.addPhoto = {
+        maxFilesize: 2,
+        acceptedFiles: '.jpg, .jpeg, .png'
+    };
+}
+
+if ($('#pjax-container').length) {
+    $(document).on('submit', 'form[data-pjax]', function (event) {
+        event.preventDefault();
+        $.pjax.submit(event, '#pjax-container', {
+            scrollTo: false
+        });
+    });
+}
