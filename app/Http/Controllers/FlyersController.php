@@ -18,6 +18,7 @@ class FlyersController extends Controller
         parent::__construct();
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -46,9 +47,9 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
-        Flyer::create($request->all());
+        $flyer = \Auth::user()->publish(new Flyer($request->all()));
         flash('Объявление добавлено!');
-        return redirect()->back();
+        return redirect(flyer_path($flyer));
     }
 
     /**

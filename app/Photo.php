@@ -20,6 +20,9 @@ class Photo extends Model
     protected $fillable = ['path', 'name', 'thumbnail_path'];
 
     protected static $baseDir = 'photos';
+
+    protected $file;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

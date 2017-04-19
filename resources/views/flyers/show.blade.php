@@ -17,10 +17,12 @@
                         <img class="thumbnail col-md-3" src="{!! \Illuminate\Support\Facades\Storage::url($photo->thumbnail_path, 'public') !!}" alt="">
                     @endforeach
                 </div>
+                @if($user && $user->owns($flyer))
                 <hr>
                 <form id="addPhoto" action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}" class="dropzone" method="post">
                     {{ csrf_field() }}
                 </form>
+                @endif
             </div>
         </div>
     </div>

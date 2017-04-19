@@ -29,7 +29,8 @@ if ($('#pjax-container').length) {
     $(document).on('submit', 'form[data-pjax]', function (event) {
         event.preventDefault();
         $.pjax.submit(event, '#pjax-container', {
-            scrollTo: false
+            scrollTo: false,
+            push: false,
         });
     });
 }

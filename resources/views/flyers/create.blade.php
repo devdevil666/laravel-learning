@@ -4,7 +4,7 @@
     <div class="jumbotron">
         <h1>Create</h1>
 
-        <div class="row" id="pjax-container">
+        <div class="row" id="pjax-container-disabled">
             @include('errors')
             <form method="post" action="/flyers" type="multipart/form-data" data-pjax="true">
                 @include('flyers.form')
