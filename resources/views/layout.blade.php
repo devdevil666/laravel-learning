@@ -51,6 +51,11 @@
                         </li>
                     @endif
                 </ul>
+                @if(auth()->check())
+                <p class="navbar-text navbar-right">
+                    Hello, {{ auth()->user()->name }}
+                </p>
+                @endif
             </div><!--/.nav-collapse -->
         </div>
     </nav>

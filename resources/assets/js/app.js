@@ -7,17 +7,22 @@
 
 require('./bootstrap');
 require('sweetalert');
-let Dropzone = require('dropzone');
 require('jquery-pjax');
+let Dropzone = require('dropzone');
 
-if ($('.dropzone').length) {
+Dropzone.autoDiscover = false;
+if ($("#addPhoto").length) {
     Dropzone.options.addPhoto = {
         maxFilesize: 2,
+        paramName: "file",
         acceptedFiles: '.jpg, .jpeg, .png',
-        success() {
-            $.pjax.reload('#photos-container');
-        }
+        uploadMultiple: false
     };
+    let addPhoto = new Dropzone("#addPhoto");
+
+    addPhoto.on("success", function(file) {
+        $.pjax.reload('#photos-container');
+    });
 }
 
 if ($('#pjax-container').length) {

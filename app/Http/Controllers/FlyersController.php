@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Flyer;
+use App\Http\Requests\ChangeFlyerRequest;
 use App\Http\Requests\FlyerRequest;
 use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class FlyersController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth', ['except' => 'show']);
+        parent::__construct();
     }
 
     /**
@@ -100,18 +104,16 @@ class FlyersController extends Controller
      * AJAX saving the file from dropzone
      * @param $zip
      * @param $street
-     * @param Request $request
+     * @param ChangeFlyerRequest|Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function addPhoto($zip, $street, Request $request)
+    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
     {
-        $this->validate($request, [
-            'file' => 'required|mimes:jpg,jpeg,png'
-        ]);
-
-        $photo = Photo::fromForm(request()->file('file'));
         /** @var Flyer $flyer */
         $flyer = Flyer::locatedAt($zip, $street)
-            ->first()
-            ->addPhoto($photo);
+            ->first();
+
+        $photo = Photo::fromForm(request()->file('file'));
+        $flyer->addPhoto($photo);
     }
 }

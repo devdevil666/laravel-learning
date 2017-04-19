@@ -44,7 +44,7 @@ class Photo extends Model
 
     public function thumb(UploadedFile $file)
     {
-        $thumbnail_path =  'photos/tm-' . time() .'.'. $file->extension();
+        $thumbnail_path =  'photos/tm-' . md5($file->getClientOriginalName()) . time() .'.'. $file->extension();
         $image = Image::make(Storage::disk('public')->get($this->path))
             ->fit(200)
             ->stream();

@@ -3,15 +3,15 @@
 @section('content')
     <div class="jumbotron">
         <div class="row">
-            <div class="col-md-3">
-                <h1>{{ $flyer->street }}</h1>
-                <h2>{!! $flyer->price !!}</h2>
+            <div class="col-md-4">
+                <h2>{{ $flyer->street }}</h2>
+                <h3>{!! $flyer->price !!}</h3>
 
                 <div class="description">
                     {!! nl2br($flyer->description) !!}
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div id="photos-container" class="row">
                     @foreach($flyer->photos as $photo)
                         <img class="thumbnail col-md-3" src="{!! \Illuminate\Support\Facades\Storage::url($photo->thumbnail_path, 'public') !!}" alt="">
