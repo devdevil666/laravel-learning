@@ -100,21 +100,4 @@ class FlyersController extends Controller
     {
         //
     }
-
-    /**
-     * AJAX saving the file from dropzone
-     * @param $zip
-     * @param $street
-     * @param ChangeFlyerRequest|Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
-     */
-    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
-    {
-        /** @var Flyer $flyer */
-        $flyer = Flyer::locatedAt($zip, $street)
-            ->first();
-
-        $photo = Photo::fromForm(request()->file('file'));
-        $flyer->addPhoto($photo);
-    }
 }

@@ -19,8 +19,6 @@ class Photo extends Model
 
     protected $fillable = ['path', 'name', 'thumbnail_path'];
 
-    protected static $baseDir = 'photos';
-
     protected $file;
 
     /**
@@ -29,29 +27,5 @@ class Photo extends Model
     public function flyer()
     {
         return $this->belongsTo(Flyer::class);
-    }
-
-    /**
-     * @param UploadedFile $file
-     * @return static
-     */
-    public static function fromForm(UploadedFile $file)
-    {
-        $photo = new static;
-        $photo->path = $file->store(static::$baseDir, 'public');
-        $photo->name = $file->getClientOriginalName();
-        $photo->thumbnail_path = $photo->thumb($file);
-
-        return $photo;
-    }
-
-    public function thumb(UploadedFile $file)
-    {
-        $thumbnail_path =  'photos/tm-' . md5($file->getClientOriginalName()) . time() .'.'. $file->extension();
-        $image = Image::make(Storage::disk('public')->get($this->path))
-            ->fit(200)
-            ->stream();
-        Storage::disk('public')->put("{$thumbnail_path}", $image);
-        return $thumbnail_path;
     }
 }

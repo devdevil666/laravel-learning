@@ -12,3 +12,10 @@
         </div>
     </div>
 @stop
+
+@section('scripts.footer')
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+Service
+
+@stop
