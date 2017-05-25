@@ -19,3 +19,4 @@ Route::post('{zip}/{street}/photos', ['as' => 'store_photo_path', 'uses' => 'Pho
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/parser', 'HomeController@parser');
