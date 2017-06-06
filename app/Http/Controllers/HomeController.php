@@ -53,6 +53,7 @@ class HomeController extends Controller
          */
 
 
+
         return view('pages.parser', compact( 'table', 'projects'));
     }
 }
